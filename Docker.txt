@@ -109,5 +109,66 @@ docker rm --force ws2 명령어를 사용하여 삭제 하면된다.
    docker images 엔터 후, docker rmi httpd 라고 하고 엔터 치면 선택한 httpd 이미지가 삭제가 됨을 확인 할 수 있다.
 
 
+------------------------------------------------------------------------------------------------
+
+# -p 컨테이너의 포트를 호스트로 연결시킨다는 명령어 
+
+docker pull httpd 혹시 지워졌을 수 있는 httpd 이미지를 다운로드 받았다.
+ 
+docker run --name ws3 -p 8081:80 httpd 이 명령어의 풀이는 
+
+: 또하나의 컨테이너를 만들건데 이름을 ws3으로 포트번호를 8081로 들어오면 컨테이너의 80번 포트로 연결하겠다는 뜻이다.
+
+그리고 docker ps 라고 적고 엔터치면 설정한 내용들을 확인 할 수 있다.
+
+
+
+
+
+# 잘 연결이 되어 실행이 되는지 확인하기
+
+Docker Desktop 의 ws2번 컨테이너를 클릭하면 
+
+2023-01-06 17:47:34 AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+2023-01-06 17:47:34 AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+2023-01-06 17:47:34 [Fri Jan 06 08:47:34.059504 2023] [mpm_event:notice] [pid 1:tid 140540631690560] AH00489: Apache/2.4.54 (Unix) configured -- resuming normal operations
+2023-01-06 17:47:34 [Fri Jan 06 08:47:34.059606 2023] [core:notice] [pid 1:tid 140540631690560] AH00094: Command line: 'httpd -D FOREGROUND'
+
+이렇게 뜬것은 연결이 되어있다는 것이고
+
+브라우저에 localhost:8080/index.html 이라고 검색후 엔터치게되면 연결되어 작동중이라는 의미로 It works! 라고 문구가 뜬다.
+
+
+
+Docker Desktop 의 ws3번 컨테이너를 클릭하면 또한 마찬가지 이며,
+
+브라우저에 localhost:8081/index.html 이라고 검색후 엔터치게되면 연결되어 작동중이라는 의미로 It works! 라고 문구가 뜬다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
